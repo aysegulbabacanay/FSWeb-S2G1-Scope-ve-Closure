@@ -15,7 +15,8 @@
  * Bu fonskiyon 'asas' dönmeli(return)
 */
 
-function ilkiniDon(stringArray, callback) {
+function ilkiniDon(stringArray, callback) 
+{
   return callback(stringArray[0])
 }
 console.log('örnek görev:', ilkiniDon(['as','sa'],function(metin){return metin+metin}));
@@ -64,10 +65,12 @@ Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapınız:
 Not: Bu fonskiyon, aşağıdaki diğer görevler için de bir callback fonksiyonu olarak da kullanılacak
 */
 
-function takimSkoru(/*Kodunuzu buraya yazınız*/){
-    /*Kodunuzu buraya yazınız*/
+function takimSkoru()
+{
+let skor = Math.floor(Math.random()*16) + 10
+return skor;
 }
-
+console.log(takimSkoru())
 
 
 
@@ -86,11 +89,20 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
 }
 */ 
 
-function macSonucu(/*Kodunuzu buraya yazınız*/){
-  /*Kodunuzu buraya yazınız*/
+function macSonucu(callback, ceyrekSayisi){
+  let evSahibi = 0;
+  let KonukTakim = 0;
+ 
+  for( let i=1; i<=ceyrekSayisi; i++){
+    evSahibi += callback();
+    KonukTakim += callback();
+  }
+  let skor = {};
+  skor.EvSahibi = evSahibi;
+  skor['konukTakim'] = KonukTakim;
+  return skor;
 }
-
-
+console.log(macSonucu(takimSkoru, 4));
 
 
 
@@ -109,11 +121,17 @@ Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
   */
 
 
-function periyotSkoru(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
+function periyotSkoru(takimSkoru) {
+  const skor = {
+    "EvSahibi": 0,
+    "KonukTakim": 0
+  };
+  skor.EvSahibi=takimSkoru();
+  skor.KonukTakim=takimSkoru();
+  return skor;
 
 }
-
+console.log(periyotSkoru(takimSkoru));
 
 /* Zorlayıcı Görev 5: skorTabelasi() 
 Aşağıdaki skorTabelasi() fonksiyonunu kullanarak aşağıdakileri yapınız:
